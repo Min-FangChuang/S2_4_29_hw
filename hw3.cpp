@@ -1,15 +1,25 @@
+/*Programming: Min-Fang Chuang   Date: 2024/04/29
+ *Instruction: Chow-Sing Lin     Class: Program Design
+ *
+ *define a class "PrimeNumber" and operators: ++ & --
+ */
 #include<iostream>
 #include<cstdlib>
 using namespace std;
 
+//define class
 class PrimeNumber {
 public:
 	PrimeNumber(int);
 	PrimeNumber();
 	int getPrime()const { return prime; }
+	//operator '++' pre-increment
 	PrimeNumber operator ++();
+	//operator '++' post-increment
 	PrimeNumber operator ++(int);
+	//operator '--' pre-decrement
 	PrimeNumber operator --();
+	//operator '--' post-decrement
 	PrimeNumber operator --(int);
 private:
 	int prime;
@@ -19,6 +29,7 @@ private:
 int main() {
 	PrimeNumber p1(13), ans;
 
+	//test four operator and display the result
 	cout << "p1=" << p1.getPrime() << endl;
 	ans = p1++;
 	cout << ans.getPrime() << " = p1++" << endl;
@@ -39,7 +50,7 @@ int main() {
 	cout << ans.getPrime() << " = --p1" << endl;
 	ans = p1;
 	cout << "after --p1, p1 = " << ans.getPrime() << endl;
-	
+
 
 	system("pause");
 	return(0);
@@ -51,14 +62,15 @@ PrimeNumber::PrimeNumber(int num): prime(num){
 PrimeNumber::PrimeNumber():prime(1){}
 PrimeNumber PrimeNumber::operator ++() {
 	int old = prime;
+	//find next largest prime number
 	while (true) {
 		prime++;
 		int num = 2;
 		bool di = true;
 		while (num != prime) {
-			if (prime % num == 0) { 
+			if (prime % num == 0) {
 				di = false;
-				break; 
+				break;
 			}
 			num++;
 		}
@@ -67,6 +79,7 @@ PrimeNumber PrimeNumber::operator ++() {
 	return PrimeNumber(old);
 }
 PrimeNumber PrimeNumber::operator ++(int ignore) {
+	//find next largest prime number
 	while (true) {
 		prime++;
 		int num = 2;
@@ -84,6 +97,7 @@ PrimeNumber PrimeNumber::operator ++(int ignore) {
 }
 PrimeNumber PrimeNumber::operator --() {
 	int old = prime;
+	//find next smallest prime number
 	while (true) {
 		prime--;
 		int num = 2;
@@ -100,6 +114,7 @@ PrimeNumber PrimeNumber::operator --() {
 	return PrimeNumber(old);
 }
 PrimeNumber PrimeNumber::operator --(int ignore) {
+	//find next smallest prime number
 	while (true) {
 		prime--;
 		int num = 2;
