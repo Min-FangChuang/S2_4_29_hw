@@ -31,25 +31,25 @@ int main() {
 
 	//test four operator and display the result
 	cout << "p1=" << p1.getPrime() << endl;
-	ans = p1++;
-	cout << ans.getPrime() << " = p1++" << endl;
-	cout << "-----------------------------------\n" << endl;
-	cout << "p1=" << p1.getPrime() << endl;
 	ans = ++p1;
 	cout << ans.getPrime() << " = ++p1" << endl;
-	ans = p1;
-	cout << "after ++p1, p1 = " << ans.getPrime() << endl;
-
 	cout << "-----------------------------------\n" << endl;
 	cout << "p1=" << p1.getPrime() << endl;
-	ans = p1--;
-	cout << ans.getPrime() << " = p1--" << endl;
+	ans = p1++;
+	cout << ans.getPrime() << " = p1++" << endl;
+	ans = p1;
+	cout << "after p1++, p1 = " << ans.getPrime() << endl;
+
 	cout << "-----------------------------------\n" << endl;
 	cout << "p1=" << p1.getPrime() << endl;
 	ans = --p1;
 	cout << ans.getPrime() << " = --p1" << endl;
+	cout << "-----------------------------------\n" << endl;
+	cout << "p1=" << p1.getPrime() << endl;
+	ans = p1--;
+	cout << ans.getPrime() << " = p1--" << endl;
 	ans = p1;
-	cout << "after --p1, p1 = " << ans.getPrime() << endl;
+	cout << "after p1--, p1 = " << ans.getPrime() << endl;
 
 
 	system("pause");
@@ -60,7 +60,7 @@ PrimeNumber::PrimeNumber(int num): prime(num){
 	test();
 }
 PrimeNumber::PrimeNumber():prime(1){}
-PrimeNumber PrimeNumber::operator ++() {
+PrimeNumber PrimeNumber::operator ++(int ignore) {
 	int old = prime;
 	//find next largest prime number
 	while (true) {
@@ -78,7 +78,7 @@ PrimeNumber PrimeNumber::operator ++() {
 	}
 	return PrimeNumber(old);
 }
-PrimeNumber PrimeNumber::operator ++(int ignore) {
+PrimeNumber PrimeNumber::operator ++() {
 	//find next largest prime number
 	while (true) {
 		prime++;
@@ -95,7 +95,7 @@ PrimeNumber PrimeNumber::operator ++(int ignore) {
 	}
 	return PrimeNumber(prime);
 }
-PrimeNumber PrimeNumber::operator --() {
+PrimeNumber PrimeNumber::operator --(int ignore) {
 	int old = prime;
 	//find next smallest prime number
 	while (true) {
@@ -113,7 +113,7 @@ PrimeNumber PrimeNumber::operator --() {
 	}
 	return PrimeNumber(old);
 }
-PrimeNumber PrimeNumber::operator --(int ignore) {
+PrimeNumber PrimeNumber::operator --() {
 	//find next smallest prime number
 	while (true) {
 		prime--;
