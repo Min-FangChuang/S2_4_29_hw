@@ -30,7 +30,7 @@ int main() {
 	num.setInteger(number);
 
 	//display every digit of the number by operator '[]'
-	int index = -1, digit;
+	int index = -1;
 	do {
 		index++;
 		cout << "integer [" << index << "] = ";
