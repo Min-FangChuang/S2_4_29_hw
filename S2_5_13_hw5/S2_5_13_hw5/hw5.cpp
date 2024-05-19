@@ -26,6 +26,7 @@ private:
 
 int main() {
 	Subscriber S1, S2("Annie", 3, new string[3]{ "channel_A" ,"channel_B" ,"channel_C" });
+
 	cout << "Subscriber 1: " << endl;
 	S1.input();
 	cout << "-----------------------" << endl;
@@ -47,8 +48,11 @@ int main() {
 	return(0);
 }
 
-Subscriber::Subscriber(string Name, int num, string* List) : name(Name), numChannels(num), channelList(List) {
-	//nothing
+Subscriber::Subscriber(string Name, int num, string* List) : name(Name), numChannels(num) {
+	channelList = new string[numChannels];
+	for (int i = 0;i < numChannels;i++) {
+		channelList[i] = List[i];
+	}
 }
 Subscriber::Subscriber() :name(""), numChannels(0), channelList(NULL) {
 	//nothing
@@ -60,7 +64,10 @@ void Subscriber::setNumChannels(int num) {
 	numChannels = num;
 }
 void Subscriber::setChannelList(string* list) {
-	channelList = list;
+	channelList = new string[sizeof(list)];
+	for (int i = 0;i < sizeof(list);i++) {
+		channelList[i] = list[i];
+	}
 }
 void Subscriber::input() {
 	cout << "Enter the name of the subscriber: ";

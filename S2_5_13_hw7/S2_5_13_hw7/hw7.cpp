@@ -1,11 +1,13 @@
 #include<iostream>
 #include<string>
 using namespace std;
+//include the classes
 #include "Security.h"
 #include "Administrator.h"
 #include "User.h"
 
 int main() {
+	//user, administrator and other people
 	string User_password = "monday"
 		, User_name = "abbott"
 		, Administrator_password = "tuesday"
@@ -13,6 +15,7 @@ int main() {
 		, Other_password = "wednesday"
 		, Other_name = "aaaaa";
 
+	//test three password
 	cout << "Administrator Test:" << endl;
 	cout << "name: " << Administrator_name << "\npassword: " << Administrator_password << endl;
 	cout << "Is administract ?";

@@ -4,6 +4,7 @@ using namespace std;
 #include "Security.h"
 
 int Security::validate(string username, string password) {
+	//identify the user name and password
 	if ((username == "abbott") && (password == "monday")) {
 		return 1;
 	}
